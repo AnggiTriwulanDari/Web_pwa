@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WARUNG MIE INDOMIE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            width: 250px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .product h3 {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .product p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .product button {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .product button:hover {
+            background-color: #0056b3;
+        }
+
+        #toppings {
+            margin-top: 30px;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        #toppings p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #toppings label {
+            display: block;
+            text-align: left;
+            margin: 0 auto 5px auto;
+            max-width: 400px;
+        }
+
+	#toppings button {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+	}
+
+	#toppings button:hover {
+	    background-color:#0056b3;
+	}
+ 
+        #cart {
+            margin-top: 30px;
+            text-align: center;
+            width: 100%;
+        }
+
+        #cart-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart-items li {
+            margin: 10px 0;
+        }
+
+        .remove-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .remove-button:hover {
+            background-color: #c82333;
+        }
+
+        #total {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #order {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #order button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #order button:hover {
+            background-color: #218838;
+        }
+
+        #confirmation {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #28a745;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WARUNG MIE INDOMIE</h1>
+    </header>
+    <main>
+        <!-- Bagian Produk -->
+        <section id="products">
+            <div class="product">
+                <img src="indomie goreng.jpg" alt="Indomie Goreng Original">
+                <h3>Indomie Goreng Original</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Original', 3000)">Tambah ke Keranjang</button>
+            </div>
+            <div class="product">
+                <img src="indomie aceh.jpg" alt="Indomie Goreng Mie Aceh">
+                <h3>Indomie Goreng Mie Aceh</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Mie Aceh', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie ayam panggang.jpg" alt="Indomie Goreng Ayam Panggang Jumbo">
+                <h3>Indomie Goreng Ayam Panggang Jumbo</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Ayam Panggang Jumbo', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie ayam pop.jpg" alt="Indomie Goreng Ayam Pop">
+                <h3>Indomie Goreng Ayam Pop</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Ayam Pop', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie cabe ijo.jpg" alt="Indomie Goreng Cabe Ijo">
+                <h3>Indomie Goreng Cabe Ijo</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Cabe Ijo', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie cakalang.jpg" alt="Indomie Goreng Cakalang">
+                <h3>Indomie Goreng Cakalang</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Cakalang', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie geprek.jpg" alt="Indomie Goreng Ayam Geprek">
+                <h3>Indomie Goreng Ayam Geprek</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Ayam Geprek', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie iga.jpg" alt="Indomie Goreng Iga Penyet">
+                <h3>Indomie Goreng Iga Penyet</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Iga Penyet', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie kriting.jpg" alt="Indomie Mi Kriting Goreng Spesial">
+                <h3>Indomie Mi Kriting Goreng Spesial</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Mi Kriting Goreng Spesial', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie pedas.jpg" alt="Indomie Goreng Pedas">
+                <h3>Indomie Goreng Pedas</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Pedas', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie rendang.jpg" alt="Indomie Goreng Rendang">
+                <h3>Indomie Goreng Rendang</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Rendang', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie rica.jpg" alt="Indomie Goreng Sambal Rica-rica">
+                <h3>Indomie Goreng Sambal Rica-rica</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Sambal Rica-rica', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie sambal matah.jpg" alt="Indomie Goreng Sambal Matah">
+                <h3>Indomie Goreng Sambal Matah</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Goreng Sambal Matah', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie rawon.jpg" alt="Indomie Kuah Rawon Pedas Mercon">
+                <h3>Indomie Kuah Rawon Pedas Mercon</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Rawon Pedas Mercon', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="indomie seblak.jpeg" alt="Indomie Kuah Seblak Hot Jeletot">
+                <h3>Indomie Kuah Seblak Hot Jeletot</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Seblak Hot Jeletot', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="kuah ayam bawang.jpeg" alt="Indomie Kuah Ayam Bawang">
+                <h3>Indomie Kuah Ayam Bawang</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Ayam Bawang', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="kuah ayam spesial.jpg" alt="Indomie Kuah Ayam Spesial">
+                <h3>Indomie Kuah Ayam Spesial</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Ayam Spesial', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="kuah bandung.jpeg" alt="Indomie Kuah Mi Kocok Bandung">
+                <h3>Indomie Kuah Mi Kocok Bandung</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Mi Kocok Bandung', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="kuah banjar.jpeg" alt="Indomie Kuah Soto Banjar Limau Kuit">
+                <h3>Indomie Kuah Soto Banjar Limau Kuit</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Soto Banjar Limau Kuit', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="kuah baso.jpeg" alt="Indomie Kuah Baso Sapi">
+                <h3>Indomie Kuah Baso Sapi</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Baso Sapi', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="kuah celor.jpeg" alt="Indomie Kuah Mi Celor">
+                <h3>Indomie Kuah Mi Celor</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Mi Celor', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    </div>
+	    <div class="product">
+                <img src="kuah lamongan.jpeg" alt="Indomie Kuah Soto Lamongan">
+                <h3>Indomie Kuah Soto Lamongan</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Soto Lamongan', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="kuah sop.png" alt="Indomie Kuah Sop Buntut">
+                <h3>Indomie Kuah Sop Buntut</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Sop Buntut', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="kuah soto medan.jpg" alt="Indomie Kuah Soto Medan">
+                <h3>Indomie Kuah Soto Medan</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Soto Medan', 3000)">Tambah ke Keranjang</button>
+            </div>
+	    <div class="product">
+                <img src="kuah soto mie.jpeg" alt="Indomie Kuah Soto Mie">
+                <h3>Indomie Kuah Soto Mie</h3>
+                <p>Harga: Rp 3.000</p>
+                <button onclick="addProductToCart('Indomie Kuah Soto Mie', 3000)">Tambah ke Keranjang</button>
+            </div>
+            <!-- Tambahkan produk lainnya di sini -->
+        </section>
+
+        <!-- Bagian Topping -->
+        <section id="toppings">
+            <p>Pilih Topping untuk Ditambahkan ke Total:</p>
+            <label><input type="checkbox" value="2000" data-name="Topping Telur" class="topping-option"> Telur (Rp 2.000)</label>
+            <label><input type="checkbox" value="3000" data-name="Topping Keju" class="topping-option"> Keju (Rp 3.000)</label>
+            <label><input type="checkbox" value="1500" data-name="Topping Bakso" class="topping-option"> Bakso (Rp 1.500)</label>
+            <label><input type="checkbox" value="2500" data-name="Topping Sosis" class="topping-option"> Sosis (Rp 2.500)</label>
+            <button onclick="addToppingsToCart()">Tambahkan Topping ke Keranjang</button>
+        </section>
+
+        <!-- Bagian Keranjang -->
+        <section id="cart">
+            <h2>Keranjang Belanja</h2>
+            <ul id="cart-items"></ul>
+            <div id="total">Total Belanja: Rp 0</div>
+        </section>
+
+        <!-- Bagian Pesan -->
+        <section id="order">
+            <button onclick="placeOrder()">Pesan Sekarang</button>
+            <div id="confirmation">Pesanan Anda telah diterima. Mohon Tunggu!</div>
+        </section>
+    </main>
+    <script>
+        let totalBelanja = 0;
+
+        // Fungsi untuk menambah produk ke keranjang
+        function addProductToCart(productName, basePrice) {
+            const cartItems = document.getElementById('cart-items');
+            const li = document.createElement('li');
+
+            li.innerHTML = `
+                ${productName} - Rp ${basePrice.toLocaleString()}
+                <button class="remove-button" onclick="removeItemFromCart(this, ${basePrice})">Hapus</button>
+            `;
+            cartItems.appendChild(li);
+
+            totalBelanja += basePrice;
+            updateTotalDisplay();
+        }
+
+        // Fungsi untuk menambah topping ke keranjang
+        function addToppingsToCart() {
+            const toppingOptions = document.querySelectorAll('.topping-option');
+            const cartItems = document.getElementById('cart-items');
+            let toppingTotal = 0;
+
+            toppingOptions.forEach(option => {
+                if (option.checked) {
+                    toppingTotal += parseInt(option.value);
+                    const li = document.createElement('li');
+
+                    li.innerHTML = `
+                        ${option.dataset.name} - Rp ${parseInt(option.value).toLocaleString()}
+                        <button class="remove-button" onclick="removeItemFromCart(this, ${option.value})">Hapus</button>
+                    `;
+
+                    cartItems.appendChild(li);
+                    option.checked = false;
+                }
+            });
+
+            totalBelanja += toppingTotal;
+            updateTotalDisplay();
+        }
+
+        // Fungsi untuk menghapus item dari keranjang
+        function removeItemFromCart(buttonElement, itemPrice) {
+            buttonElement.parentElement.remove();
+            totalBelanja -= parseInt(itemPrice);
+            updateTotalDisplay();
+        }
+
+        // Fungsi untuk memperbarui total belanja
+        function updateTotalDisplay() {
+            const totalDisplay = document.getElementById('total');
+            totalDisplay.textContent = `Total Belanja: Rp ${totalBelanja.toLocaleString()}`;
+        }
+
+        // Fungsi untuk memproses pesanan
+        function placeOrder() {
+            const confirmation = document.getElementById('confirmation');
+            confirmation.style.display = 'block';
+
+            document.getElementById('cart-items').innerHTML = '';
+            totalBelanja = 0;
+            updateTotalDisplay();
+        }
+    </script>
+</body>
+</html>
